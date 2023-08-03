@@ -1,0 +1,27 @@
+// Constants for the fire sensor and buzzer pins
+const int fireSensorPin = 7;
+const int buzzerPin = 8;
+
+void setup() {
+  // Set pin modes
+  pinMode(fireSensorPin, INPUT);
+  pinMode(buzzerPin, OUTPUT);
+  // Initialize Serial communication (optional)
+  Serial.begin(9600);
+}
+
+void loop() {
+  // Read the value from the fire sensor
+  int fireStatus = digitalRead(fireSensorPin);
+
+  // If fire is detected (fire sensor output is HIGH)
+  if (fireStatus == HIGH) {
+    // Activate the buzzer
+    digitalWrite(buzzerPin, HIGH);
+    // Print a message to Serial Monitor (optional)
+    Serial.println("Fire detected!");
+  } else {
+    // If no fire, turn off the buzzer
+    digitalWrite(buzzerPin, LOW);
+  }
+}
